@@ -1,0 +1,72 @@
+﻿@model ZdravstveniSistem.Models.Obisk
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Obisk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacient.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pacient.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zdravnik.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zdravnik.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumObiska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumObiska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RazlogObiska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazlogObiska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnoza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnoza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opombe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opombe)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

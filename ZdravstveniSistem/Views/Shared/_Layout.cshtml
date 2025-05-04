@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/NavBar.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+            <i class="bi bi-hospital"></i> <span>Sistem</span>
+        </a>
+        <a class="nav-link" href="@Url.Action("Index", "Pacients")" title="Pacienti">
+            <i class="bi bi-people"></i> <span>Pacienti</span>
+        </a>
+        <a class="nav-link" href="@Url.Action("Index", "Zdravniks")" title="Zdravniki">
+            <i class="bi bi-person-badge"></i> <span>Zdravniki</span>
+        </a>
+        <a class="nav-link" href="@Url.Action("Index", "Obisks")" title="Obiski">
+            <i class="bi bi-calendar-check"></i> <span>Obiski</span>
+        </a>
+        <a class="nav-link" href="@Url.Action("Index", "Recepts")" title="Recepti">
+            <i class="bi bi-file-medical"></i> <span>Recepti</span>
+        </a>
+
+        <button class="collapse-btn" onclick="toggleSidebar()">
+            <i class="bi bi-chevron-left" id="toggleIcon"></i> <span>Skrij meni</span>
+        </button>
+    </div>
+
+    <div class="content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const icon = document.getElementById('toggleIcon');
+
+            sidebar.classList.toggle('collapsed');
+            icon.classList.toggle('bi-chevron-left');
+            icon.classList.toggle('bi-chevron-right');
+        }
+    </script>
+</body>
+</html>

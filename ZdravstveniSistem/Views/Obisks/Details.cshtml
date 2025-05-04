@@ -1,0 +1,66 @@
+﻿@model ZdravstveniSistem.Models.Obisk
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Obisk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacient.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pacient.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zdravnik.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zdravnik.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumObiska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumObiska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RazlogObiska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazlogObiska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnoza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnoza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opombe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opombe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

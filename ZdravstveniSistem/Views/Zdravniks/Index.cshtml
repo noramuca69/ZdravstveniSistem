@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ZdravstveniSistem.Models.Zdravnik>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priimek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specializacija)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelefonskaStevilka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LetoZaposlitve)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priimek)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Specializacija)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelefonskaStevilka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LetoZaposlitve)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model ZdravstveniSistem.Models.Recept
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recept</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Obisk.RazlogObiska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obisk.RazlogObiska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImeZdravila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImeZdravila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Doziranje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doziranje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DneviJemanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DneviJemanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Navodila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Navodila)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
