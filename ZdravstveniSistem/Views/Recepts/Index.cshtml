@@ -1,57 +1,38 @@
 ﻿@model IEnumerable<ZdravstveniSistem.Models.Recept>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Seznam receptov";
 }
+<link href="~/Content/ÇustomFontByMarko.css" rel="stylesheet" />
 
-<h2>Index</h2>
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 style="font-size: 50px; color: gainsboro" class="fw-bold ">Seznam receptov</h2>
+        @Html.ActionLink("Dodaj recept", "Create", null, new { @class = "btn btn-primary rounded-pill px-4 shadow BoldText bi bi-plus-lg" })
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Obisk.RazlogObiska)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImeZdravila)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Doziranje)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DneviJemanja)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Navodila)
-        </th>
-        <th></th>
-    </tr>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body" style="background: gainsboro;">
+                        <h5 class="card-title mb-2 text-dark">
+                            <i class="bi bi-journal-medical"></i> Recept za @item.Obisk.RazlogObiska
+                        </h5>
+                        <p class="card-text mb-1"><strong><i class="bi bi-pills"></i> Zdravilo:</strong> @item.ImeZdravila</p>
+                        <p class="card-text mb-1"><strong><i class="bi bi-clipboard"></i> Doziranje:</strong> @item.Doziranje</p>
+                        <p class="card-text mb-1"><strong><i class="bi bi-calendar-check"></i> Dnevi jemanja:</strong> @item.DneviJemanja</p>
+                        <p class="card-text"><strong><i class="bi bi-info-circle"></i> Navodila:</strong> @item.Navodila</p>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Obisk.RazlogObiska)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImeZdravila)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doziranje)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DneviJemanja)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Navodila)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+                        <div class="d-flex justify-content-between mt-3">
+                            @Html.ActionLink(" Uredi", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-warning btn-sm rounded-pill bi bi-pencil" })
+                            @Html.ActionLink(" Podrobnosti", "Details", new { id = item.Id }, new { @class = "btn btn-outline-primary btn-sm rounded-pill bi bi-eye-fill" })
+                            @Html.ActionLink(" Izbriši", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger btn-sm rounded-pill bi bi-trash" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -2,29 +2,28 @@
 @{
     ViewBag.Title = "Seznam pacientov";
 }
-
+<link href="~/Content/ÇustomFontByMarko.css" rel="stylesheet" />
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-primary">📋 Seznam pacientov</h2>
-        @Html.ActionLink("➕ Dodaj pacienta", "Create", null, new { @class = "btn btn-success rounded-pill px-4 shadow" })
+        <h2 style="font-size: 50px; color: gainsboro" class="fw-bold "> Seznam pacientov</h2>
+        @Html.ActionLink("Dodaj pacienta", "Create", null, new { @class = "btn btn-primary rounded-pill px-4 shadow BoldText bi bi-plus-lg"  })
     </div>
-
     <div class="row">
         @foreach (var item in Model)
         {
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body">
+                    <div class="card-body" style="background: gainsboro;">
                         <h5 class="card-title mb-2 text-dark">@item.Ime @item.Priimek</h5>
-                        <p class="card-text mb-1"><strong>📅 Rojstvo:</strong> @item.DatumRojstva</p>
-                        <p class="card-text mb-1"><strong>📍 Naslov:</strong> @item.Naslov</p>
-                        <p class="card-text mb-1"><strong>📞 Telefon:</strong> @item.TelefonskaStevilka</p>
-                        <p class="card-text"><strong>📧 Email:</strong> @item.Email</p>
+                        <p class="card-text mb-1"><strong><i class="bi bi-calendar"></i> Rojstvo:</strong> @item.DatumRojstva.ToString("dd.MM.yyyy")</p>
+                        <p class="card-text mb-1"><strong><i class="bi bi-geo-alt-fill"></i> Naslov:</strong> @item.Naslov</p>
+                        <p class="card-text mb-1"><strong><i class="bi bi-telephone-fill"></i> Telefon:</strong> @item.TelefonskaStevilka</p>
+                        <p class="card-text"><strong><i class="bi bi-envelope"></i> Email:</strong> @item.Email</p>
 
                         <div class="d-flex justify-content-between mt-3">
-                            @Html.ActionLink("✏️ Uredi", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-warning btn-sm rounded-pill" })
-                            @Html.ActionLink("👁️ Podrobnosti", "Details", new { id = item.Id }, new { @class = "btn btn-outline-primary btn-sm rounded-pill" })
-                            @Html.ActionLink("🗑️ Izbriši", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger btn-sm rounded-pill" })
+                            @Html.ActionLink(" Uredi", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-warning btn-sm rounded-pill bi bi-pencil " })
+                            @Html.ActionLink(" Podrobnosti", "Details", new { id = item.Id }, new { @class = "btn btn-outline-primary btn-sm rounded-pill bi bi-eye-fill" })
+                            @Html.ActionLink(" Izbriši", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger btn-sm rounded-pill bi bi-trash" })
                         </div>
                     </div>
                 </div>

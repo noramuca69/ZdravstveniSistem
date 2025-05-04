@@ -1,0 +1,38 @@
+.BoldText {
+    font-weight: 500;
+    margin-right: 10px;
+}
+body {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('pexels-pixabay-415779.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: -1; /* Ensure the image stays behind the content */
+        opacity: 1; /* Full opacity for the image */
+    }
+
+    body::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4); /* Dark overlay, adjust alpha for more or less darkness */
+        z-index: -1;
+    }

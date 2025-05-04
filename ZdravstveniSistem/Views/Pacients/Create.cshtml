@@ -1,86 +1,76 @@
 ﻿@model ZdravstveniSistem.Models.Pacient
-
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="~/Content/ÇustomFontByMarko.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div style="background: content-box;"  class="min-h-screen bg-gray-100 flex items-center justify-center py-8">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Dodaj novega pacienta</h2>
 
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Pacient</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ime, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-red-500 mb-4" })
+
+            <div class="grid grid-cols-1 gap-5">
+                <div>
+                    @Html.LabelFor(model => model.Ime, new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.Ime, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.Ime, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Priimek, new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.Priimek, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.Priimek, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.DatumRojstva, "Datum Rojstva", new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.TextBoxFor(model => model.DatumRojstva, "{0:yyyy-MM-dd}", new { @type = "date", @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" })
+                    @Html.ValidationMessageFor(model => model.DatumRojstva, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Spol, new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.DropDownListFor(model => model.Spol,
+                        new SelectList(new[] {
+                            new { Value = "Moški", Text = "Moški" },
+                            new { Value = "Ženski", Text = "Ženski" }
+                        }, "Value", "Text"),
+                        "-- Izberi --",
+                        new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm bg-white focus:outline-none focus:ring focus:border-blue-300" })
+                    @Html.ValidationMessageFor(model => model.Spol, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.TelefonskaStevilka, "Telefonska Številka", new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.TelefonskaStevilka, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.TelefonskaStevilka, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Email, new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Naslov, new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.Naslov, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.Naslov, "", new { @class = "text-red-500 text-sm" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Priimek, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Priimek, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Priimek, "", new { @class = "text-danger" })
+            <div class="mt-6 flex justify-between items-center">
+                <input type="submit" value="Ustvari" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200" />
+                @Html.ActionLink("Nazaj na seznam", "Index", null, new { @class = "text-blue-600 hover:underline" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DatumRojstva, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatumRojstva, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumRojstva, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Spol, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Spol, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Spol, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TelefonskaStevilka, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TelefonskaStevilka, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TelefonskaStevilka, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Naslov, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Naslov, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Naslov, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
