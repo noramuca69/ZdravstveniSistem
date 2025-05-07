@@ -19,7 +19,7 @@
             <div class="grid grid-cols-1 gap-5">
                 <div>
                     @Html.LabelFor(model => model.DatumObiska, "Datum obiska", new { @class = "block text-gray-700 font-medium mb-1" })
-                    @Html.EditorFor(model => model.DatumObiska, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.EditorFor(model => model.DatumObiska, "{0:yyyy-MM-dd}", new { htmlAttributes = new { type="date", @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
                     @Html.ValidationMessageFor(model => model.DatumObiska, "", new { @class = "text-red-500 text-sm" })
                 </div>
 
