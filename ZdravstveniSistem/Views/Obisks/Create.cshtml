@@ -1,78 +1,65 @@
 ﻿@model ZdravstveniSistem.Models.Obisk
 
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="~/Content/ÇustomFontByMarko.css" rel="stylesheet" />
+
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div style="background: content-box;" class="min-h-screen bg-gray-100 flex items-center justify-center py-8">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Dodaj nov obisk</h2>
 
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-red-500 mb-4" })
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Obisk</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.DatumObiska, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatumObiska, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatumObiska, "", new { @class = "text-danger" })
+            <div class="grid grid-cols-1 gap-5">
+                <div>
+                    @Html.LabelFor(model => model.DatumObiska, "Datum obiska", new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.DatumObiska, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.DatumObiska, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.RazlogObiska,"Razlog obiska", new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.RazlogObiska, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.RazlogObiska, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Diagnoza, new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.Diagnoza, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.Diagnoza, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Opombe, new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.EditorFor(model => model.Opombe, new { htmlAttributes = new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300" } })
+                    @Html.ValidationMessageFor(model => model.Opombe, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.PacientId, "Pacient", new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.DropDownList("PacientId", null, new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm bg-white focus:outline-none focus:ring focus:border-blue-300" })
+                    @Html.ValidationMessageFor(model => model.PacientId, "", new { @class = "text-red-500 text-sm" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.ZdravnikId, "Zdravnik", new { @class = "block text-gray-700 font-medium mb-1" })
+                    @Html.DropDownList("ZdravnikId", null, new { @class = "w-full px-4 py-2 border rounded-lg shadow-sm bg-white focus:outline-none focus:ring focus:border-blue-300" })
+                    @Html.ValidationMessageFor(model => model.ZdravnikId, "", new { @class = "text-red-500 text-sm" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RazlogObiska, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RazlogObiska, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RazlogObiska, "", new { @class = "text-danger" })
+            <div class="mt-6 flex justify-between items-center">
+                <input type="submit" value="Ustvari" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200" />
+                @Html.ActionLink("Nazaj na seznam", "Index", null, new { @class = "text-blue-600 hover:underline" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Diagnoza, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Diagnoza, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Diagnoza, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Opombe, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Opombe, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Opombe, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PacientId, "PacientId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("PacientId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PacientId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ZdravnikId, "ZdravnikId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ZdravnikId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ZdravnikId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

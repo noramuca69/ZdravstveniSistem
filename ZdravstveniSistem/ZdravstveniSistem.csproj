@@ -141,10 +141,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ObiskApiController.cs" />
     <Compile Include="Controllers\ObisksController.cs" />
     <Compile Include="Controllers\PacientApiController.cs" />
     <Compile Include="Controllers\PacientsController.cs" />
+    <Compile Include="Controllers\ReceptApiController.cs" />
     <Compile Include="Controllers\ReceptsController.cs" />
+    <Compile Include="Controllers\ZdravnikApiController.cs" />
     <Compile Include="Controllers\ZdravniksController.cs" />
     <Compile Include="Data\ZdravstveniSistemContext.cs" />
     <Compile Include="Global.asax.cs">

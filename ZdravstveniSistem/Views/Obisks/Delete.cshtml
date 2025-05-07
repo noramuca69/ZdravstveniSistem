@@ -1,72 +1,55 @@
 ﻿@model ZdravstveniSistem.Models.Obisk
-
+<link href="~/Content/ÇustomFontByMarko.css" rel="stylesheet" />
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Izbriši";
 }
 
-<h2>Delete</h2>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Obisk</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Pacient.Ime)
-        </dt>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center py-10" style="background:border-box">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl">
+        <h2 class="text-2xl font-bold mb-6 text-red-600">Ali ste prepričani, da želite izbrisati ta obisk?</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pacient.Ime)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Zdravnik.Ime)
-        </dt>
+        <dl class="space-y-6">
+            <div class="flex justify-between">
+                <dt class="font-medium text-gray-600">Ime pacienta</dt>
+                <dd class="text-gray-800">@Html.DisplayFor(model => model.Pacient.Ime)</dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Zdravnik.Ime)
-        </dd>
+            <div class="flex justify-between">
+                <dt class="font-medium text-gray-600">Ime zdravnika</dt>
+                <dd class="text-gray-800">@Html.DisplayFor(model => model.Zdravnik.Ime)</dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DatumObiska)
-        </dt>
+            <div class="flex justify-between">
+                <dt class="font-medium text-gray-600">Datum obiska</dt>
+                <dd class="text-gray-800">@Html.DisplayFor(model => model.DatumObiska)</dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DatumObiska)
-        </dd>
+            <div class="flex justify-between">
+                <dt class="font-medium text-gray-600">Razlog obiska</dt>
+                <dd class="text-gray-800">@Html.DisplayFor(model => model.RazlogObiska)</dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RazlogObiska)
-        </dt>
+            <div class="flex justify-between">
+                <dt class="font-medium text-gray-600">Diagnoza</dt>
+                <dd class="text-gray-800">@Html.DisplayFor(model => model.Diagnoza)</dd>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.RazlogObiska)
-        </dd>
+            <div class="flex justify-between">
+                <dt class="font-medium text-gray-600">Opombe</dt>
+                <dd class="text-gray-800">@Html.DisplayFor(model => model.Opombe)</dd>
+            </div>
+        </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Diagnoza)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Diagnoza)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Opombe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Opombe)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="mt-8 flex justify-between">
+                <input type="submit" value="Izbriši" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" />
+                @Html.ActionLink("Nazaj na seznam", "Index", null, new { @class = "text-blue-500 hover:underline" })
+            </div>
+        }
+    </div>
 </div>

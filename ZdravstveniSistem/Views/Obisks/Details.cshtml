@@ -1,66 +1,39 @@
 ﻿@model ZdravstveniSistem.Models.Obisk
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Podrobnosti obiska";
 }
 
-<h2>Details</h2>
+<link href="~/Content/ÇustomFontByMarko.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
-<div>
-    <h4>Obisk</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Pacient.Ime)
-        </dt>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center py-10" style="background:border-box">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Podrobnosti obiska</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pacient.Ime)
-        </dd>
+        <div class="grid grid-cols-2 gap-y-4 text-gray-700 text-sm mb-6">
+            <div class="font-semibold">Pacient:</div>
+            <div>@Html.DisplayFor(model => model.Pacient.Ime) @Html.DisplayFor(model => model.Pacient.Priimek)</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Zdravnik.Ime)
-        </dt>
+            <div class="font-semibold">Zdravnik:</div>
+            <div>@Html.DisplayFor(model => model.Zdravnik.Ime) @Html.DisplayFor(model => model.Zdravnik.Priimek)</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Zdravnik.Ime)
-        </dd>
+            <div class="font-semibold">Datum obiska:</div>
+            <div>@Html.DisplayFor(model => model.DatumObiska)</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DatumObiska)
-        </dt>
+            <div class="font-semibold">Razlog obiska:</div>
+            <div>@Html.DisplayFor(model => model.RazlogObiska)</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DatumObiska)
-        </dd>
+            <div class="font-semibold">Diagnoza:</div>
+            <div>@Html.DisplayFor(model => model.Diagnoza)</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RazlogObiska)
-        </dt>
+            <div class="font-semibold">Opombe:</div>
+            <div>@Html.DisplayFor(model => model.Opombe)</div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.RazlogObiska)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Diagnoza)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Diagnoza)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Opombe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Opombe)
-        </dd>
-
-    </dl>
+        <div class="flex justify-between mt-8">
+            @Html.ActionLink("Uredi", "Edit", new { id = Model.Id }, new { @class = "bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200" })
+            @Html.ActionLink("Nazaj na seznam", "Index", null, new { @class = "text-blue-600 hover:underline self-center" })
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

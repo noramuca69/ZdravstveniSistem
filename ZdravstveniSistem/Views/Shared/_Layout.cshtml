@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="sidebar"  style="background: gainsboro;"id="sidebar">
+    <div class="sidebar" style="background: gainsboro;" id="sidebar">
         <a style="color: black ;font-size: 20px;" class="navbar-brand" href="@Url.Action("Index", "Home")">
             <i class="bi bi-hospital"></i> <span>Zdravstveni sistem</span>
         </a>
@@ -26,10 +26,18 @@
         <a class="nav-link" href="@Url.Action("Index", "Recepts")" title="Recepti">
             <i class="bi bi-file-medical"></i> <span>Recepti</span>
         </a>
-        <a class="nav-link" href="@Url.Content("~/api/pacientapi")" title="Zdravnik Api">
-        <i class="bi bi-person-badge"></i> <span>Zdravniki</span>
+        <a class="nav-link" href="@Url.Content("~/api/pacienti")" title="Pacient Api">
+            <i class="bi bi-person-badge"></i> <span>Pacient Api</span>
         </a>
-            
+        <a class="nav-link" href="@Url.Content("~/api/recept")" title="Recept Api">
+            <i class="bi bi-person-badge"></i> <span>Recept Api</span>
+        </a>
+        <a class="nav-link" href="@Url.Content("~/api/obiski")" title="Obisk Api">
+            <i class="bi bi-person-badge"></i> <span>Obisk Api</span>
+        </a>
+        <a class="nav-link" href="@Url.Content("~/api/zdravniki")" title="Zdravnik Api">
+            <i class="bi bi-person-badge"></i> <span>Zdravnik Api</span>
+        </a>
         <button class="collapse-btn" onclick="toggleSidebar()">
             <i class="bi bi-chevron-left" id="toggleIcon"></i> <span>Skrij meni</span>
         </button>

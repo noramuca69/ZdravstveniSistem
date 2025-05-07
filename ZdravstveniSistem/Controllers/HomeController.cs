@@ -10,7 +10,7 @@ namespace ZdravstveniSistem.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Pacients");
         }
 
         public ActionResult About()
